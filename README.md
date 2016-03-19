@@ -1,8 +1,8 @@
 # Resume_CodeSamples
 Resume &amp; Some Code Samples
 
-Repository Contains 
-1) My resume: Pleaase refer to my LinkedIn Page for the most up-to-date version. LinkedIn: www.linkedin.com/in/giovannilorenzo
+Repository Contains: 
+#1) My resume: Pleaase refer to my LinkedIn Page for the most up-to-date version. LinkedIn: www.linkedin.com/in/giovannilorenzo
 
 2) Python Sample Code (unfinished front-end of an app) using TkInter, Matplotlib & Python OOP
 
