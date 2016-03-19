@@ -1,0 +1,1902 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[top=2cm, bottom=2cm, outer=3.5cm, inner=1cm, heightrounded, marginparwidth=3cm, marginparsep=0.5cm]{geometry}
+\usepackage[strict]{changepage}
+\usepackage{lmodern}
+\usepackage{marginnote}
+\usepackage[T1]{fontenc}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{xcolor}
+\usepackage{IEEEtrantools}
+\usepackage{colortbl}
+\interdisplaylinepenalty=9999
+\usepackage[all]{xy}
+\hyphenpenalty=10000
+\exhyphenpenalty = 10000
+\setlength\parindent{0pt}
+\usepackage{animate}
+\usepackage{ifthen}
+\usepackage{caption}
+\captionsetup{justification=raggedleft,singlelinecheck=false}
+\usepackage{floatrow}
+\usepackage{subfig}
+\usepackage{media9}
+\usepackage{listings}
+\lstset{keywordstyle=\color{blue}, basicstyle=\ttfamily, commentstyle={}, columns=fullflexible, numbers=left, showstringspaces=false} 
+\usepackage[listings]{tcolorbox}
+\usepackage{parcolumns}
+
+\definecolor{pglcl}{RGB}{253, 246, 227}
+\definecolor{mybl}{RGB}{7, 54, 66}
+
+\definecolor{pagebl}{RGB}{240, 255, 255}
+\definecolor{pageyl}{RGB}{240, 255, 240}
+\definecolor{pagepp}{RGB}{220, 230, 230}
+\definecolor{pagelm}{RGB}{220, 250, 240}
+\definecolor{pageold}{RGB}{240, 245, 225}
+\definecolor{ctbl}{RGB}{0, 16, 232} 
+\definecolor{ctnb}{RGB}{0, 61, 129} 
+\definecolor{ctgr}{RGB}{0, 144, 103}
+\definecolor{ctpk}{RGB}{255, 0, 254}
+\definecolor{ctmg}{RGB}{197, 22, 108} 
+\definecolor{ctpp}{RGB}{71, 34, 108}
+\definecolor{ctbr}{RGB}{232, 67, 2} 
+
+\definecolor{bbl}{RGB}{240, 255, 255}
+\definecolor{byl}{RGB}{240, 255, 240}
+\definecolor{bpp}{RGB}{230, 230, 250}
+\definecolor{bgr}{RGB}{173, 255, 47}
+\definecolor{bgb}{RGB}{255, 255, 0}
+
+
+
+
+
+
+
+
+
+
+
+\newcommand{\rbl}{\color{RoyalBlue}}
+\newcommand{\cy}{\color{Cyan}}
+\newcommand{\mg}{\color{Magenta}}
+\newcommand{\emr}{\color{Emerald}}
+\newcommand{\wsb}{\color{WildStrawberry}}
+\newcommand{\bvl}{\color{BlueViolet}} 
+\newcommand{\plm}{\color{Plum}} 
+
+\newcommand{\colorselctor}{	{\LARGE \bf {\color{ctbl} ctbl. } {\color{Cyan} Cyan. } {\color{RoyalBlue} RoyalBlue. } {\color{ctnb} ctnb. } {\color{ctgr} ctgr. } {\color{ctpk} ctpk. } {\color{ctmg} ctmg. } {\color{Magenta} Magenta. } {\color{ctpp} ctpp. } {\color{ctbr} ctbr. } \colorbox{pagebl} {pagebl. } \colorbox{pageyl} {pageyl. } \colorbox{pagelm} {pagelm. } \colorbox{pagepp} {pagepp.} \colorbox{pageold} {pageold.}}}
+
+
+\setlength\emergencystretch\textwidth
+\boldmath
+\graphicspath{{./images/}}
+\sffamily
+\begin{document}
+\begin{titlepage}
+\newgeometry{}
+\pagecolor{pagebl}
+\bfseries
+\begin{center} 
+\includegraphics[width=0.15\textwidth]{img1}\\[1cm]
+{\color{ctbr} \LARGE Best Institution\\[1.5cm]}
+{\color{ctpp}\Large First Project\\[0.5cm]}
+{\color{RoyalBlue}\rule{0.5\textwidth}{2pt}}\\[0.4cm]
+{\color{ctmg} \Huge Project Title}\\[0.4cm]
+{\color{RoyalBlue}\rule{0.5\textwidth}{2pt}}\\[1.4cm]
+\begin{minipage}{0.4\textwidth}
+\centering\Large \emph{Author}\\
+Giovanni Lorenzo
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\centering\Large \emph{Supervisor}\\
+Dr. Best
+\end{minipage}
+\vfil
+\Large \today
+\end{center}
+\end{titlepage}
+	
+\restoregeometry
+\pagecolor{pageold}
+\tableofcontents
+\listoffigures
+\colorselctor
+
+\newpage	
+
+\section{Probability}
+sample space S = \{H,T,H,H,H,T\}  \\
+
+R> represented as data frame  \\
+
+S = data.frame(exprement1outcome = c('H', 'T', ...))  \\
+
+library(prob)  \\
+
+tosscoin(1) gives the sample space of one toss > one head and one tail  
+also rolldie(n=, nsides=)  \\
+
+also cards()  \\
+
+also roulette()  \\
+all these return data frames
+
+urnsamples create a sample space, return data frame
+urnsamples(elements, size=3) \\
+
+
+an event can be extracted by row by certain values card = 'Heart'
+subset(S, suit=='Heart')  \\
+subset(S, rank \%in\% 7:9)  \\
+
+for a whole vector, isin(x,y) > means "exact number of each element" of y in x?
+all(y \%in\% x) means is at least one of each elements of y in x?  \\
+
+x = 1:10  \\
+
+x2 = c(x,3)  \\
+
+y = c(3,3,7)  \\
+
+isin(x,y) > FALSE      
+isin(x1,y) > TRUE    
+isin(x1,y, ordered=TRUE) > FALSE      
+all(y \%in\% x) > TRUE  \\
+
+
+The ordered option can be used to subset certain  \\
+trials with certain orders  \\
+
+S = rolldie(4)  \\
+
+trial  = subset(S, isin(S,c(1,2,3,4)))          
+
+to check for repeats = isrep,countrep\\
+
+
+\subsection{Set Union, Intersection and Difference}
+union(A,B)  \\
+
+intersect(A,B)   
+
+setdiff(A,B) in A, but not in B
+
+\section{Probability}
+representing probability  \\
+outcome  = rolldie(1)  \\
+p = rep(1/6, 6)  \\
+probspace(outcome, p) > it returns data frame  \\
+p is optional in probspace, default is 1/n  \\
+rolldie(n, makespace=TRUE), also rolldie(n, TRUE)optional argument combine sample space with prob, similar result to probspace(outcome, p)  \\
+other sample space generator function have similar option (tosscoin,cards,roulette), but NOT urnsample  \\
+example: setting probability space for unfair coin \\
+S = tosscoin(1) > S = \{H, T\} \\
+probspace(S, c(0.7,0.3))
+
+to calculate prob
+prob(subset/event in the sample space)  \\
+prob(subset(S,logical description))
+
+
+
+\section{Counting}
+\paragraph{Ordered Sequence}
+i.e. order matters
+\begin{align}
+\text{Without replacement: } n(n-1)...(n-k) = \frac{n!}{(n-1)!}\\
+\text{With replacement: } n^k
+\end{align}
+
+\paragraph{Ordered Sequence}
+i.e. order matters\\
+pretend that order matters, then divide by factorial
+\begin{align}
+\text{Without replacement: } \frac{n!}{k!(n-1)!} = \binom{n}{k}  \\
+\text{With replacement: } x_i+...+x_n = k \rightarrow \binom{(n-1)+k}{k}
+\end{align}
+
+In R> k!  is factorial(k)
+and binomial coefficient is choose(n,k)
+
+nsamp(n=distinct objects, size=samplesize, replace=, ordered=)\\
+
+multiplication principle > prod(n:k)  \\
+
+testing repetition, of an element in a sample space, N, in each row\\
+
+isrep(N, 'red', 3)
+
+\section{Random Variable} 
+Adding random variable rv,
+addrv(S, U=X1+X2+3*X3)
+where x1, x2, x3 are column, i.e. die\\
+addrv(S, FUN=max, invar=c(X1,X2,X3), name='funname')\\
+
+for marginal probability\\
+marginal(S, vars=c('V', 'W')) where V and W are rv in S (columns)
+
+\section{Discrete Random Variable}
+PMF
+\[
+f_X(x_i) = P(X=x_i)
+\]
+
+CDF
+\[
+F_X(x_i) = P(X\leq t) =\sum_{-\infty}^{t} f_X(x_i)
+\]
+In R $\rightarrow$ cumsum$(f_X(X\leq t))$\\
+Also in DistrEx package, define discrete rv, then compute variance and expected value\\
+library(distrEx)
+X = DiscreteDistribution(supp=0:3, prob=c(1,3,3,1)/8)
+E(X); var(X); sd(X)\\
+\vspace{5pt}
+Mean ($\mu$)
+\[
+\sum_{-\infty}^{\infty} x_i f_X(x_i)
+\]
+Variance ($E(X) \quad \sigma^2$)
+\[
+\sum_{-\infty}^{\infty} (x_i-\mu)^2 f_X(x_i)
+\]
+
+
+\subsection{Discrete Uniform Distribution}
+R\\
+sample(X0:Xm, size=, replace=TRUE)
+
+
+
+\subsection{Binomial Distribution}
+based on Bernoulli trials\\
+outcome is either a success with a value of 1, and p probability and failure with a value of 0 and probability p-1 = q\\
+pmf
+\[
+f_X(x) =p^x(1-p)^(1-x)
+\]
+\[
+1\times p + 0 \times q = p
+\]
+\[
+(1-p)^2 \times p + (0-p)^2 \times q = p(1-p)^2 + p^2(1-p) \\
+= p(1-p)(1-p+p) = p-p^2
+\]
+In Binomial, repeated Bernoulli, n times, with success =k, and failure n-k
+\[
+\sum_{0}^{n} f_X(x) =\sum_{0}^{n} \binom{n}{k} p^k(1-p)^(n-k)
+\]
+In R, pbinom for cdf and dbinom for pmf
+pbinom(nsuccessorlower, size=ntosses, prob=p) that means 
+$F_X(X<success)$ ntosses is the total number of tosses
+to calculate success between success1 and success2
+diff(pbinom(c(success2, success1), size=tosses, prob=p))\\
+Another way is to use distr package\\
+library(distr)
+X = Binom(size=ntossespertrial, prob=psuccess)\\
+X = Binom(size=3, prob=0.5)\\
+p(X)(2) is equavelent to pbinom(2, size=3, prob=0.5) which means probability that number of successes is equal or below 2 in 3 tosses with prob of success is 0.5 for any toss\\
+d(X)(2) means probability of exactly 2 successes in the 3 tosses\\
+simulation:\\
+rbinom(ntrials, size=ntossespertrial, prob=psuccess) \\
+which is equivalent to r(X)(nobservations)\\
+the result of simulation is the count of success in these nobservations of each trial based on the success probability of p
+
+\section{Moment Generating Function}
+mgf
+\[
+M_X(t) = E(e^{tx_i}) =\sum_{X\in S}^{} e^{tx_i} f_X(x_i)
+\]
+
+
+\vspace*{40pt}
+{\color{Magenta} \section{Continuous Random Variable}}
+
+
+\text{\bf\color{Cyan} pdf }
+
+\vspace*{10pt}\fcolorbox{pagebl}{pagebl}{\color{ctpk}\begin{minipage}{\textwidth}\begin{align*} 
+p_{_{X}}(a \leq x \leq b) = f_{_{X}}(x \in A) = \int_{a}^{b} f(x)dx
+\end{align*}\end{minipage}}\vspace*{30pt}
+ 
+
+ 
+
+
+\text{\bf\color{Cyan} cdf } 
+
+\vspace*{10pt}\fcolorbox{pagebl}{pagebl}{\color{ctpk}\begin{minipage}{\textwidth}\begin{align*} 
+ F_{_{X}}(X \leq t) =\int_{\substack{t \in X}} f(x)dx \qquad \forall\quad -\infty \leq t \leq \infty 
+\end{align*}\end{minipage}}\vspace*{30pt}
+
+
+In R: defining and integrating function
+\begin{verbatim}
+    f <- function(){
+                 x^2 
+                 }
+    integrate(f, lower=0.14, upper=0.71)
+\end{verbatim}
+Another method: defining \text{\bf\color{Cyan} r.v.} as a function, then get the distribution
+\begin{verbatim}
+    library(distr)
+    f <- function(){
+                 x^2 
+                 }
+    AbscontDistribution(d=f, low1=0.14, up1=0.71)
+\end{verbatim}
+
+
+
+{\mg  \section{Conditional Probability}}
+For  $~\rbl  A_{i} ~$ mutually exclusive events in the sample space  $~\rbl   \omega ~$, probability of  $~\rbl  B~$ is given by:
+
+
+
+\begin{align*}\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+p(B) = \sum_{i=1}^{n} p\left(B \mid A_{i}  \right) p\left(A_{i} \right)     
+$}\end{align*}
+
+
+{\mg  \section{Variance and Covariance}}
+\begin{align*}\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+\text{\bf Cov}\!\left(X~,~Y\right) = \text{\bf E}\!\left((X-\mu_{_{X}})(Y-\mu_{_{Y}})\right) = \text{\bf E}\!\left(XY\right) - \text{\bf E}(X)
+\text{\bf E}\!\left(Y\right)
+$}\end{align*}
+{\textrm{\textbf{\textit{\cy  If }}} \plm  $\quad X=Y ~$}
+\begin{align*}
+\text{\bf Cov}\!\left(X~,~X\right)= \text{\bf E}\!\left((X-\mu_{_{X}})(Y-\mu_{_{Y}})\right) = \text{\bf E}(X^{2}) - \left(\text{\bf E}(X)\right)^2 = \text{\bf Var}\!\left(X\right)
+\end{align*}
+\begin{align*}
+\text{\bf Cov}\!\left(X~,~c\right)  &= 0  \\
+\text{\bf Cov}\!\left(cX~,~Y\right)  &= c ~  \text{\bf Cov}\!\left(X~,~Y\right) \\
+\text{\bf Cov}\!\left(X~,~Y + Z\right)  &= \text{\bf Cov}\!\left(X~,~Y\right) + \text{\bf Cov}\!\left(X~,~Z\right) \\
+\text{\bf Var}\!\left(X_{1} + X_{2}\right)   &=  \text{\bf Var}\!\left(X_{1} \right) + \text{\bf Var}\!\left(X_{2} \right) +~ \overbrace{2 \text{\bf Cov}\!\left(X_{1} ~,~X_{2} \right) }^{{\plm  =0 ~\textbf{\small If independent}}} ~
+\end{align*}
+
+{\textrm{\textbf{\textit{\cy  If  ${\emr X, Y}$ are independent, they are uncorrellated\ensuremath{~\Longrightarrow ~} }}} \plm  i.e. $\quad \textrm{\textbf{\textit{Cov}}}\left(X~,~Y\right) =0 ~$}
+\begin{align*}
+\text{\bf Corr}\!\left(X~,~Y\right)  &=  \dfrac{\text{\bf Cov}\!\left(X~,~Y\right) }{\text{\bf SD}\!\left(X\right) \text{\bf SD}\!\left(Y\right) } = \text{\bf Cov}\!\left(\dfrac{(X-\mu_{_{X}}) }{\text{\bf SD}\!\left(X\right) } ~,~\dfrac{(Y-\mu_{_{Y}})}{\text{\bf SD}\!\left(Y\right) } \right) 
+\end{align*}
+\vspace*{10pt} \\
+
+
+{\mg  \section{Median}}
+\begin{align*}
+\textrm{\textbf{\textit{\cy  Discrete}}}\implies m  &=  \dfrac{a + b}{2} \\
+\textrm{\textbf{\textit{\cy  Continuous}}}\implies \int_{-\infty}^{m} f\left(x\right) dx  &=  0.5 
+\end{align*}
+For skewed distribution, such as exponential, median \textrm{\textbf{\textit{\cy  is not}}} equal to mean 
+
+
+
+\vspace*{40pt}
+{\mg  \section{Moment Generating Function}}
+
+\begin{align*}\color{ctpk} \colorbox{bbl}{$\displaystyle  M_{_{X}}\left(t\right) \coloneqq \begin{dcases*}
+\sum_{\substack{x}} ~e^{tx} ~ p_{_{X}}(x) \qquad & \bf\color{pagebl} For Discrete $\quad $ \bigskip \\
+\int_{-\infty}^{+\infty} ~e^{tx} ~ f_{_{X}}(x) ~ dx \qquad & \bf\color{pagebl} For Continuous $\quad $ 
+\end{dcases*}$} \end{align*}
+
+\begin{align*}
+\mathbf{E}(~e^{tx}) = \mathbf{E}\left(\sum_{i=0}^{n} \frac{x^{n} t^{n} }{n!}\right)= \sum_{i=0}^{n}\left[ \dfrac{t^{n} }{n!} ~ \overbrace{\mathbf{E}(X^{n})}^{{\plm   ~\text{\bf\small \ensuremath{\plm  r^{^{th}}} moment}}} ~\right] 
+\end{align*} 
+
+The \ensuremath{\plm  r^{^{th}}} derivative of ${\rbl  M_{X}^{r}(0) }$ evaluated at zero is the \ensuremath{\plm  r^{^{th}}} moment. \\
+\begin{align*}\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+M_{_{X}}^{^{n}}(0) = \text{\bf E}(X^{^{n}})
+$}\end{align*}
+Same \text{\bf\cy  mgf} \ensuremath{~\Longrightarrow ~} Same distribution.  \\
+The sum of two \text{\bf\cy  i.i.d.} \text{\bf\cy  r.v.} \ensuremath{~\Longrightarrow ~} is the sum of their \text{\bf\cy  mgf} 
+\begin{align*}
+\text{\bf E}\left(~e^{t(X + Y)}\right) = \text{\bf E}\left(~e^{tX}\right) \text{\bf E}\left(~e^{tY}\right) = M_{_{X}}(t) ~ M_{_{Y}}(t) 
+\end{align*}
+${\rbl  X \sim M_{_{X}}(t)}$ {$~\Longrightarrow ~$} Then {\rbl  $Y= aX + b$} is: 
+\begin{align*}
+M_{_{Y}}(t) = ~e^{tb} M_{_{X}}(ta) 
+\end{align*}
+
+\vspace*{20pt}
+{\wsb \subsection*{Higher Moment}}
+\text{\bf\cy  Mean \ensuremath{\text{\bf E}(X)}} is the first moment about the origin \\
+\text{\bf\cy  Variance \ensuremath{\text{\bf Var}((X-\mu_{_{X}})^{2})}} is the second moment about the mean\\
+\text{\bf\cy  Skewness} is the third moment around the mean \\
+
+\paragraph{\bvl{ Moments about the origin raw moment)}\\}
+${\rbl  \textrm{\textbf{\textit{E}}}\left(X\right) }$ is the first moment about the origin 
+\begin{align*}
+\mu_{r}^{'} = \textrm{\textbf{\textit{E}}}\left(X^{r} \right) = \sum_{\substack{x}} x^{r} f(x)  \\
+\mu_{r}^{'} = \textrm{\textbf{\textit{E}}}\left(X^{r}\right) = \int_{-\infty}^{+\infty}x^{r} f(x) dx
+\end{align*}
+Note: ${\rbl  \mu_{1}^{'} = \textrm{\textbf{\textit{E}}}\left(X\right) = \mu_{_{X}}}$ 
+
+\vspace*{10pt}
+
+\paragraph{\bvl{ Central Moment}\\}
+Odd moments around the mean are zero for symmetrical distributions.  \ensuremath{\text{\bf var}(X)} is the first second moment about the mean i.e. central moment. \bigskip \\ ${\rbl  \ensuremath{\text{\bf var}(X)} = ~ \overbrace{\mathbf{E}((X-\mu_{_{X}})^{2})}^{{\plm   ~\text{\bf\small second central}}} ~= ~ \overbrace{\mathbf{E}(X^2)}^{{\plm   ~\text{\bf\small second raw}}} ~ - \left(~ \overbrace{\ensuremath{\text{\bf E}(X)}}^{{\plm   ~\text{\bf\small first raw}}} ~\right)^{2}}$ 
+
+\begin{align*}
+\mu_{r} = \mathbf{E}((X-\mu_{_{X}})^{r}) &=  \sum_{\substack{z}} (X-\mu_{_{X}})^{r}f(x) \\
+ &= \int_{-\infty}^{+\infty} (X-\mu_{_{X}})^{r} f(x) dx 
+\end{align*}
+{\mg  \section{Combinatorics }}
+
+{\wsb\subsection*{ Multiplication }}
+Number of ways to do  $~\rbl  A~$ with  $~\rbl  m~$ ways and  $~\rbl  B~$ with  $~\rbl  n~$ ways 
+
+\begin{align*}\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+m \times n 
+$}\end{align*}
+
+
+{\wsb\subsection*{ Permutations No repeats }}
+
+$~\rbl  _n\!P_k = n (n-1) (n-2)... (n + 1 -k)   ~$ \\
+If we used  $~\rbl  N=  k + n~$ Then
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+_N\!P_k = \dfrac{N!}{(N-k)! } = \dfrac{(k + n )  ! }{(( k + n) -k ) ! } =  \dfrac{( k + n)! }{n !} = {k + n \choose k}   k!
+$} 
+\end{IEEEeqnarray*}}
+
+If there is repeat in the original source set, we divide by the factorial of those those repeats 
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+_n\!P_{n}  = \dfrac{n!}{r_{1}! ~ r_{2}! ~ ... ~ r_{n}!}  
+$} 
+\end{IEEEeqnarray*}}
+
+
+
+{\wsb\subsection*{ Permutation with repeat }}
+\[\text{\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+~ ^{\!^{\! n}\!}\!P_{\!_{\! k}} = n^{k}    
+$}}\]
+
+{\wsb\subsection*{ Sterling formula to calculate large {$n!$}  }}
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+n! \approx\sqrt{2 \pi n}\left( \dfrac{n}{e} \right)^{n}      
+$} 
+\end{IEEEeqnarray*}}
+
+More accurate formula: 
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+n! \approx\sqrt{2 \pi n}\left( \dfrac{n}{e} \right)^{n}\left(1 + \dfrac{1}{12 n} \right) 
+$} 
+\end{IEEEeqnarray*}}
+
+
+{\wsb\subsection*{Combination with repeats  }}
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+_n\!C_{k} =  {n + k -1 \choose k} = \dfrac{(n + k -1)! }{(n-1)! ~ k! }  
+$} 
+\end{IEEEeqnarray*}}
+
+{\wsb\subsection*{ Combination without repeat }}
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+_n\!C_{k} = \dfrac{n!}{(n-k)! ~ k! }  
+$} 
+\end{IEEEeqnarray*}}
+
+
+
+
+{\wsb\subsection*{ Making all possible subsets from  {$n$} elements }}
+$\mg  n~$ items each can be either selected or not 
+
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+\sum_{k=0}^{k = n}  = 2^{n} 
+$} 
+\end{IEEEeqnarray*}}
+
+{\wsb\subsection*{ Pascal Triangle }}
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+{n + 1 \choose k} = {n \choose k} + {n \choose k-1}    
+$} 
+\end{IEEEeqnarray*}}
+
+{\wsb\subsection*{ Binomial Coefficient  }}
+
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+(x + y)^{n} = \sum_{k=0}^{n} {n \choose k} x^{k}y^{n-k}   
+\end{IEEEeqnarray*}
+}
+
+
+
+
+{\wsb\subsection*{ Birthday problem }}
+
+
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+\dfrac{n^{k} - {n \choose k} ~ k!  }{n^{k} }  
+$} 
+\end{IEEEeqnarray*}}
+
+
+
+{\mg  \section{Bayes Theorem}}
+
+
+\section{\mg {Gamma and Beta}} 
+$~\mg  \Gamma( \alpha)  ~$
+{\color{ctpk}
+	\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+		\colorbox{bbl}{$ \displaystyle \Gamma(x)  \coloneqq  \int_{0}^{\infty} t^{x-1} e^{-t} dt  \quad \forall ~ x>0$} 
+	\end{IEEEeqnarray*}}
+ For $~\rbl  \alpha ~$ integers: 
+{\color{pagebl}
+	\begin{IEEEeqnarray*}{LLLLLLLL}
+		\Gamma(x + 1) = x \Gamma(x)\\
+		\Gamma(x) = (x-1)!\\
+		\Gamma( ^{1}/_{2} ) =\sqrt{  \pi } 
+	\end{IEEEeqnarray*}
+}
+
+ 
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+	B( \alpha  ~,~  \beta )     \coloneqq \int_{0}^{1} t^{ \alpha -1} (1-t)^{ \beta -1} = \dfrac{ \Gamma( \alpha ) \Gamma( \beta )}{ \Gamma( \alpha + \beta )} 
+	 			$} 
+\end{IEEEeqnarray*}}
+If $~\rbl   \alpha ~$ and $~\rbl   \beta ~$  are integers {$~\Longrightarrow ~$} $~\rbl  \Gamma ~$ functions becomes the inverse of binomial coefficient.
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+ B( \alpha  ~,~  \beta ) = \dfrac{( \alpha - 1)! ( \beta -1)!}{( \alpha + \beta - 2)!} = { \alpha + \beta -2 \choose \alpha -1}^{-1}   
+\end{IEEEeqnarray*}
+}
+
+{\mg \section{Uniform}} 
+$\color{pagebl}\displaystyle \mathbf{U\left(a  ~,~b \right)}$ For $~\rbl  X~ \in ~ [a ~ , ~ b]~$  \\ {\rbl \textbf{\textit{pdf}}} 
+\[\color{ctpk} \colorbox{bbl}{$ \displaystyle
+f(x) \coloneqq \begin{cases}
+\dfrac{1}{b-a}  \qquad &\text{{\color{pagebl} If $\quad a  \leq x  \leq b$}}\bigskip \\
+0 \qquad &\text{{\color{pagebl} Otherwise}} 
+\end{cases}$}\]
+
+\[\begin{array}[c]{rcccccccc}\displaystyle 
+F_{X}\left(x\right) &=&\displaystyle  \int_{a}^{x}\dfrac{1}{b-a} dx \bigskip \\
+ &=&\left[ \dfrac{t}{a-b} \right]_{0}^{x}   &=&\dfrac{x-a}{a-b} 
+\end{array}\]
+
+{\rbl \textbf{\textit{cdf}}} :
+\[\color{ctpk} \colorbox{bbl}{$ \begin{array}[c]{rcccccccc} \displaystyle
+ &F_{X}\left(x\right) &  \coloneqq \begin{cases}
+\dfrac{x-a}{b-a}  \qquad &{\color{pagebl} \forall ~ x:\quad  x  \geq a } \bigskip \\
+0 \qquad &{\color{pagebl} \forall ~ x \quad \textbf{Otherwise}~  }
+\end{cases} \\
+\end{array} $}\]
+
+\[\begin{array}[c]{rcccccccc} \displaystyle
+\text{E}(X) &=& \displaystyle \int_{a}^{b} x f_{X}\left(x\right) dx \bigskip \\
+&=& \displaystyle \int_{a}^{b} \dfrac{x}{b-a} \bigskip \\
+&=& \left[\dfrac{x^{2} }{2 \left(b-a\right) } \right]_{a}^{b} \bigskip \\
+&=& \dfrac{b^{2} }{2\left(b-a\right) } -\dfrac{a^{2} }{2\left(b-a\right) } \bigskip \\ 
+&=&\dfrac{b^{2} - a^{2}}{2\left(b-a\right) } &=&\dfrac{\left(b-a\right) \left(b + a\right)  }{2\left(b-a\right) } \bigskip \\
+\end{array}\]
+\emph{\cy \textit{\textbf{E(X)}}} 
+\[\mg  \colorbox{byl}{$ \begin{array}[c]{rcccccccc}\displaystyle
+\text{E}(X) &=& \dfrac{b + a}{2}
+\end{array} $}\]
+
+\[\begin{array}[c]{rcccccccc} \displaystyle
+\text{Var}(X)  &=&\text{E}(X^2) -(\text{E}(X))^{2} \bigskip \\
+&=&\dfrac{b^{3} -a^{3}}{3\left(b-a\right) } -\dfrac{\left(b + a\right)^{2}  }{4} \bigskip \\
+&=& \dfrac{4\left(b-a\right)\left(b^{2} + ab + a^{2} \right)  -3 \left(b-a \right)\left(b + a\right)^{2} }{12 \left(b-a\right) } \bigskip \\
+&=&\dfrac{4b^{2} + 4ab + 4a^{2} - 3b^{2} -6ab-3a^{2}   }{12} \bigskip \\
+&=&  \dfrac{b^{2} - 2ab + a^{2}}{12} \bigskip \\
+&=& \dfrac{\left(b - a\right)^{2}}{12}
+\end{array} \]
+
+$\cy \textit{\textbf{Var}} \left(x\right) $ 
+\[\mg  \colorbox{byl}{$ \begin{array}[c]{rcccccccc}\displaystyle
+\text{Var}(X) = \dfrac{\left(b-a\right)^{2}  }{12}
+\end{array} $}\]
+
+${\cy \textit{\textbf{LOTUS}} }$  
+ \[\mg  \colorbox{byl}{$ \begin{array}[c]{rcccccccc} \displaystyle
+\text{E}(g(x)) = \displaystyle \int_{- \infty }^{ \infty } g(x)~  f_{X}\left(x\right)~ dx    
+ \end{array} $}\]
+\vspace*{20pt}
+
+
+If we let  $\rbl  u\sim{\emr \overbracket[1pt]{\rbl  \textbf{\textit{U}}\left( 0~ ,~ 1\right) }^{\textbf{\small Standard Uniform}}} \quad $ $\emr u = x^{2} $ then $\emr du = 2x dx$\\
+$\emr f_U(u) = f_X(x) = \dfrac{1}{1-0} = 1$  {$~\Downarrow~$}
+
+\[\begin{array}[c]{rcccccccc} \displaystyle
+\text{E}(u^{2} ) &=& \displaystyle \int_{0}^{1} u^{2} f(u) du \bigskip \\
+&=& \displaystyle  \int_{0}^{1} u^{2} f_{X}\left(x\right)  du \bigskip \\
+&=&\left[ \dfrac{u^{3} }{3}\right]_{0}^{1} = \dfrac{1}{3}
+\end{array}\]
+
+\[\begin{array}[c]{rcccccccc} \displaystyle
+\text{Var}(u) &=& \text{E}(u^{2} ) - \left(\text{E}(u) \right)^{2} \bigskip \\
+&=& \dfrac{1}{3} - \dfrac{1}{4} = \dfrac{1}{12} \bigskip \\
+\end{array}\]
+\vspace*{20pt} 
+\paragraph{\bvl Universality of Uniform\\}
+We can simulate a \ensuremath{\cy \textbf{\textit{cdf}}}  by taking its inverse and plugging in samples from a uniform distribution, the outcome will be distributed according to our \ensuremath{\cy \textbf{\textit{cdf}}} 
+
+\[\begin{array}[c]{rcccccccc} \displaystyle
+F_{X}\left(x \right) &=& 1- e^{- x} {\plm  \qquad \forall ~ x :\quad x>0} \bigskip \\ 
+F^{-1}\left(u\right) &=& - \ln\left(1-u\right){\plm  \qquad \forall ~ u: \quad \ensuremath{\plm  U \sim \textbf{\textit{Unif}}\left(0 ~,~ 1\right)} } \bigskip \\ 
+&\ensuremath{\Longrightarrow}& - \ln\left(1-u\right)~ \sim ~ F
+\end{array}\]
+Note: If \ensuremath{\plm  U \sim \textbf{\textit{Unif}}\left(0 ~,~ 1\right)} and \ensuremath{\emr x= a + bu} then \ensuremath{\plm  X \sim \textbf{\textit{Unif}}\left(a ~,~ a + b\right)}  
+
+\vspace*{20pt}
+
+\ensuremath{\cy \textbf{\textit{MGF}}}  
+  
+\[\begin{array}[c]{rcccccccc} \displaystyle
+m(t) =  \dfrac{e^{bt} -e^{at} }{t(b-a)}   
+\end{array}\]
+
+
+
+ 
+{\mg 
+\section{Bernoulli Process}} 
+{\wsb\subsection*{Bernoulli {$~\Longrightarrow ~$} is it success or failure?}}
+\text{{\mg Bernoulli$(p)$}} 
+
+\begin{IEEEeqnarray*}{RLLLLLLLLLL} \color{ctpk} \colorbox{bbl}{$\displaystyle f(X=k) \coloneqq\begin{cases}\displaystyle 
+p  \qquad &\text{\color{pagebl} If $\quad k=1$} \bigskip  \\
+q=(1-p) \qquad &\text{\color{pagebl} If $\quad k=0$} 
+\end{cases}$} \end{IEEEeqnarray*}
+
+\begin{align*}
+\sigma^{2}  &= \text{Var}(X) =\text{E}(X^2) - \mu^{2} = p - p^{2} = p(1-p)\\ 
+ &= pq 
+\end{align*}
+\begin{align*}
+\ensuremath{\plm  \colorbox{pglcl}{$\displaystyle \mu = \textrm{\textbf{\textit{E}}}(X)  \coloneqq \begin{cases} \displaystyle 
+p ~ \times ~1 = p \qquad &\textrm{\textbf{\textit{\cy  For success}}} \bigskip \\
+q ~ \times ~0 =0 \qquad &\textrm{\textbf{\textit{\cy  For failure}}} 
+\end{cases}$}}
+\end{align*}
+{\textrm{\textbf{\textit{\cy  \textrm{\textbf{\textit{MGF}}}}}} \plm  $\quad\ensuremath{~\Longrightarrow ~}  ~$} 
+\begin{align*}
+~ e^{\textstyle tX} = p ~ e^{\textstyle - t ~ \times ~1} + q~ e^{\textstyle t ~ \times ~0}  = p ~ e^{\textstyle t} + q 
+\end{align*}
+
+
+
+{\wsb\subsection*{Binomial {$~\Longrightarrow ~$} how many m successes among n trials?}} 
+\text{{\color{ctpk}Binomial$(n ~,~ p)$}} 
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+f(X=x)  \coloneqq {n \choose x} p^{x} (1-p)^{n-x} \quad \forall ~ x = \left\{0, 1, 2, 3, \dots ,n \right\}     
+$} 
+\end{IEEEeqnarray*}}
+
+
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+p(X\leq k)=\sum_{x=0}^{k} {n \choose k} p^{x}\left(1-p\right)^{n-x}     
+$} 
+\end{IEEEeqnarray*}}
+
+
+
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+\mu = np \\
+\sigma^{2} = npq \\
+m(t) = (pe^{t} + q)^{n} 
+\end{IEEEeqnarray*}
+}
+Note that  ${\emr M_{X_{n} } (t) =\left(M_{X}\left(t\right)  \right)^{n} }$ for all independent X, then:
+{\textrm{\textbf{\textit{\cy  \textrm{\textbf{\textit{MGF}}} }}} \plm  $\quad\ensuremath{~\Longrightarrow ~}  ~$}
+\begin{align*}
+M_{X}\left(t\right)  =\left(p ~ e^{\textstyle t} - q\right)^{n}  
+\end{align*}
+
+
+
+{\wsb\subsection*{Geometric {$~\Longrightarrow ~$} how many before the first success?}} 
+\text{{\color{ctpk}Geometric$(p)$}} is the only discrete memoryless distribution. It's the discrete version of exponential distribution.
+\begin{align*}\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+f(x)  \coloneqq q^{x-1} p 
+$}\end{align*}
+
+The geometric series:
+\begin{align*}
+\sum_{i=0}^{n-1} r^{i} = \dfrac{1-r^{n}}{1-r}\qquad \forall ~ r: \quad 0 <r<1
+\end{align*}
+
+
+
+\emph{\cy \textit{\textbf{CDF}}}    first success happens on the {$~\rbl  x^{\textit{st}}$} trial 
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+p\left(X  \leq x\right)  = 1 - p\left(X  > x\right)\\
+p\left(X > x\right) =\sum_{i = 0}^{ \infty} pq^{x - 1 + 1+ i} = pq^{x}\dfrac{1}{p} =q^{x}
+\end{IEEEeqnarray*}} 
+Therefore:
+\[\text{\mg  \colorbox{byl}{$ \displaystyle
+p\left(X  \leq x\right)   \coloneqq 1- \left(1-p\right)^{x}  
+$}}\]
+
+ 
+let $~\rbl  X~$ denotes the $~\rbl  n^{th} ~$ success with a value of 1, zero otherwise with success probability of $~\rbl  p = \dfrac{1}{n} ~$ 
+
+{\color{pagebl}\begin{IEEEeqnarray*}{LLLLLLLL}
+\mu = \sum_{i=0}^{n} x_{i}  ~ p ~ q^{ x_{i} -1} = p \dfrac{1}{(1-q)^{2} } = p \dfrac{1}{p^{2} } = \dfrac{1}{p}  \\
+\sigma^{2} = \dfrac{1-p}{p^{2} } \\
+m(t) = \dfrac{pe^{t} }{1-qe^{t} } 
+\end{IEEEeqnarray*}}
+
+
+\paragraph{\bvl Benford Law {$~\Longrightarrow ~$} How likely is the first digit to be?\\}
+The ratio of change in smaller digits are higher than larger digits, example: $~\rbl \frac{20}{30} >\frac{60}{70}  ~$ 
+ \[\text{\mg  \colorbox{byl}{$ \displaystyle
+ p\left(x\right) = \log\left(1 + \dfrac{1}{x} \right) 
+ $}}\]
+
+
+
+{\wsb\subsection*{Negative Binomial {$~\Longrightarrow ~$} how many n we need before obtaining the {$r^{th} $} success?}} 
+\text{{\color{ctpk}NegativeBinomial$(p ~,~ r)$}} 
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+f(x)  \coloneqq {x-1 \choose r-1} p^{r}q^{x-r}    
+$} 
+\end{IEEEeqnarray*}}
+
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+\mu \dfrac{r}{p}\\
+\sigma^{2} = \dfrac{rq}{p^{2} }  \\
+m(t) = \left( \dfrac{pe^{t} }{1-qe^{t} } \right)^{r}  
+\end{IEEEeqnarray*}
+}
+
+
+{\wsb\subsection*{Hypergeometirc {$~\Longrightarrow ~$} given  {$M$}  total successes in  {$N$}  population, how many  {$x$}  succeses in a sample of size  {$n$} ?}}
+\text{{\color{ctpk}Hypergeometric$(N ~,~ M ~,~ n)$}} 
+
+\[\color{ctpk} \colorbox{bbl}{$ \begin{array}[c]{rcccccccc}
+f(X=x)  \coloneqq \dfrac{ \binom{M}{x} {N-M \choose n-x}  }{ {N \choose n} }  
+\end{array} $}\]
+
+
+
+
+
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+\mu = np \\
+\sigma^{2} = {N-n \choose N-1} npq 
+\end{IEEEeqnarray*}
+}
+
+
+
+
+
+{\color{ctpk} \section{Poisson Processes}}
+
+{\wsb\subsection*{Poisson  {$~\Longrightarrow ~$} how many events per unit time?}}
+
+$\plm  \textbf{\textit{Poisson}}\left(  \lambda t\right)$ Used for situations with large number of trials but with very small probability that any of the event may occur, earthquakes,  emails \\
+As ${\rbl  n \to \infty }$ and ${\rbl  p \to 0 \ensuremath{~\Longrightarrow ~}\lambda = np}$ remain constant. \\
+\begin{align*}
+\lim_{\substack{n\to \infty \\ p \to 0}}{n \choose k} p^{k} (1-p)^{n-k} = \frac{(np)^{k}}{k!} ~ e^{^{- np}}
+\end{align*}
+Note that ${\rbl  \dfrac{\lambda}{n}}$ is the probability of success since ${\rbl  \lambda = np = \text{\bf E}(X)}$. \\
+
+\text{\bf\cy  pdf} \ensuremath{~\Longrightarrow ~}
+\begin{align*}\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+f(x) \coloneqq\dfrac{\lambda^{x} }{x!} ~ e^{\textstyle - \lambda }
+$}\end{align*}
+
+\vspace*{20pt} 
+
+\text{\bf\plm  Taylor Series} \ensuremath{~\Longrightarrow ~}
+\begin{align*}
+\sum_{x=0}^{\infty}\dfrac{\lambda^{x} }{x!}  = e^{\lambda } = ~ \overbrace{\left(1 +\dfrac{x}{n} \right)^{n}}^{{\plm   ~\text{\bf\small Compound Interest}}} ~
+\end{align*}
+
+\vspace*{20pt}
+
+\text{\bf\cy \ensuremath{\text{\bf E}(X)}} \ensuremath{~\Longrightarrow ~}
+\begin{align*}
+\text{\bf E}(X) &=\sum_{i=1}^{\infty} x \frac{\lambda^{x}}{x!} e^{- \lambda } \\
+&= e^{- \lambda } \sum_{i=1}^{\infty} x\frac{ \lambda \lambda^{x-1} }{x \left(x-1\right)! } \\
+&= \lambda e^{- \lambda } e^{- \lambda } \\
+&= \lambda 
+\end{align*}
+
+\text{\bf\cy  mgf} \ensuremath{~\Longrightarrow ~}
+\begin{align*}
+\text{\bf E}\left(~e^{tx}\right) = \sum_{i=0}^{\infty} ~e^{tx} ~ \dfrac{\lambda^{x}}{x!}~ e^{^{- \lambda}} = ~ e^{^{- \lambda}} \sum_{i=0}^{\infty} \dfrac{\left(\lambda ~e^{t}\right)^{x}}{x!} = ~ e^{^{- \lambda}}~e^{\lambda e^{t}} = ~e^{\lambda(~e^{tx}-1)}
+\end{align*}
+
+To find the distribution of X and Y, multiply the \text{\bf\cy  mgf} of X and Y
+
+\vspace*{20pt} 
+
+
+
+\text{\bf\cy  \ensuremath{\text{\bf Var}(X)}} \ensuremath{~\Longrightarrow ~} ${\rbl  \lambda}$
+
+\vspace*{20pt} 
+
+
+\paragraph{\bvl Poisson Paradigm\\}
+In a large sample space with "weakly independent" events each is associated with nonidentical probability, then the number of events to occur is approximately Poisson distributed. \\
+
+\vspace*{10pt} 
+
+
+\ensuremath{\plm  \text{\bf Poisson}(\lambda)}  does converge to Poisson when ${\rbl  n}$ is large, ${\rbl  np = \lambda \qquad n \to \infty \qquad p \to 0}$
+ 
+
+\paragraph{\bvl{ The Law of Small Numbers}\\}
+For infinitely many ${\rbl  n}$ small intervals with length ${\rbl  \tfrac{T}{n}}$, Let ${\rbl  X}$ be the total number of events occuring with a rate of ${\rbl  \lambda }$ events number over ${\rbl  T}$ time, then: \\
+
+\vspace*{10pt} 
+
+
+${\rbl  \text{\bf E}(X) = \lambda T = n p_{_{n}}}$ \ensuremath{~\Longrightarrow ~} ${\rbl  p_{_{n}} = \tfrac{\lambda T}{n}}$
+
+\vspace*{20pt}
+{\wsb \subsection*{General Formula for Poisson}}
+\begin{align*}\mg  \colorbox{byl}{$ \displaystyle 
+P_{X}\left(X=k\right) =~\frac{\left[\text{\bf E}(X)\right]^{k}}{k!} ~ e^{- \text{\bf E}(X)}
+$}\end{align*}
+
+Note that: ${\rbl  \text{\bf E}(X) \coloneqq \lambda}$. \\
+For binomial approximation \ensuremath{~\Longrightarrow ~} ${\rbl  \text{\bf E}(X) = np}$. \\
+For time dependent events, the rate and expectation can differ. For example, the rate ${\rbl  \lambda}$ is 2 events per day, but expectation is defined over a 30 days period, then \ensuremath{~\Longrightarrow ~} the rate ${\rbl  \lambda}$ need to be adjusted to reflect the defined expectation. In this case: \\
+${\rbl  \lambda T  = \text{\bf E}(X)}$ \ensuremath{~\Longrightarrow ~} ${\rbl  \text{\bf E}(X) = 30 ~ \times ~2}$
+
+\vspace*{20pt} 
+
+
+
+
+{\wsb\subsection*{ Exponential {$~\Longrightarrow ~$} how long before the first event?}}
+${\displaystyle \plm  \textrm{\textbf{\textit{Exponential}}}\left(\lambda \right)}$  memoryless properties\ensuremath{~\Longrightarrow ~} i.e. waiting t time has no bearing over the probability 
+\\
+\text{\bf\cy  pdf}\ensuremath{~\Longrightarrow ~}
+\begin{align*} \color{ctpk} \colorbox{bbl}{$ \displaystyle 
+f_{_{Y}}(y) \coloneqq \lambda e^{- \lambda y}\qquad \forall ~ y: \quad y > 0
+$}\end{align*}
+
+
+{\textrm{\textbf{\textit{\cy  cdf}}} \plm  $\quad \ensuremath{~\Longrightarrow ~}  ~$} 
+\begin{align*}
+\int_{0}^{x} \lambda ~ e^{\textstyle - \lambda t} dt = - ~ e^{\textstyle - \lambda t} \left.\vphantom{\dfrac{a}{b}}\right|_{t=0}^{t=x} = 1 - ~ e^{\textstyle - \lambda x} 
+\end{align*}
+\begin{align*}\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+F(x) \coloneqq 1 - ~ e^{\textstyle - \lambda x}\qquad \forall ~ x: \quad x > 0
+$}\end{align*} 
+
+{\textrm{\textbf{\textit{\cy  survival}}} \plm  $\quad p\left(X \geq t\right) = 1-p\left(X \leq t\right) ~$}  ${\emr ~ e^{\textstyle - \lambda t} }$
+
+\begin{align*}
+\mu   &=  \dfrac{1}{\lambda } \\  
+\sigma^{2} &=  \dfrac{1}{\lambda ^{2} }  \\
+m(t) &=  \dfrac{1}{(1- \,^{t}\!/\!_{\lambda })} 
+\end{align*}
+{\textrm{\textbf{\textit{\cy  MGF}}} \plm  $\quad\ensuremath{~\Longrightarrow ~}  ~$}
+\begin{align*}
+M\left(t\right)  &= \textrm{\textbf{\textit{E}}}(e^{tx} )  \\
+&= \int_{t=0}^{\infty} ~ e^{\textstyle tx} ~ \lambda e^{\textstyle - \lambda x} dx  =\lambda \int_{t=0}^{\infty} ~ e^{\textstyle - x\left(\lambda-t\right) }  \\
+&= \dfrac{\lambda }{\lambda -t} 
+\end{align*}
+
+
+
+{\wsb\subsection*{Gamma {$~\Longrightarrow ~$} how long before the {$r^{th} $} event? }} 
+\text{{\color{ctpk}Gamma$(\lambda ~,~ r)$}} or  \text{{\color{ctpk}Gamma$( \alpha  ~,~  \beta )$}}  {$~\Longrightarrow ~$}  \text{{\color{ctpk}Exponential$(\lambda ) =  \text{{\color{ctpk}Gamma$(\lambda ~,~ 1)$}} $}} 
+
+{\color{ctpk} \begin{IEEEeqnarray*}{LLLLLLLLLLLLL} 
+\colorbox{bbl}{$ \displaystyle 
+f\left(x\right) \coloneqq \dfrac{1}{ \Gamma(r)} \lambda^{r} x^{r-1} e^{- \lambda x} = \dfrac{x^{( \alpha -1) } ~ e^{- \,^{x}\!/\!_{ \beta }}  }{ \beta ^{ \alpha } ~ \Gamma( \alpha ) } \qquad \forall ~ x  \in  [0 ~,~ \infty )      
+$}\end{IEEEeqnarray*}}
+
+
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+\mu = \dfrac{1}{\lambda } =  \alpha \beta \\
+\sigma^{2} = \dfrac{r}{\lambda^{2} } =  \alpha \beta^{2} \\
+m(t) = \left(1- \dfrac{t}{\lambda } \right)^{-r} = \left(1-\beta t\right)^{- \alpha}   
+\end{IEEEeqnarray*}
+}
+In Bayesian Statistics: $\mg  \textit{Gamma}\left(  \alpha ~,~ \beta  \right)$ is used such that $~\rbl    \alpha~$ counts the number of events and $~\rbl  \beta ~$ the elapsed time. 
+
+{\wsb\subsection*{Beta {$~\Longrightarrow ~$} given sample space with {$ \alpha, \beta $}  events occur over time, how long before the {$ \alpha^{\textit{th}} $} event?}}
+$\mg  \textit{Beta}\left(  \alpha ~,~ \beta  \right)$ Note that {$~\Longrightarrow ~$} $\mg  \textit{Beta}\left( 1 ~,~ 1 \right)$  =  $\mg  \textit{Uniform}\left( 0 ~,~ 1 \right)$ 
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+f\left(x\right) \coloneqq \dfrac{1}{B( \alpha ~,~ \beta )} ~ x^{ \alpha-1} ~ (1-x)^{\beta -1} \qquad \forall ~ 0  \leq x  \leq 1    
+$} 
+\end{IEEEeqnarray*}}
+
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+\mu = \dfrac{\alpha }{\alpha + \beta } \\
+\sigma^{2} \dfrac{\alpha \beta }{(\alpha + \beta )^{2} (\alpha + \beta + 1) } 
+\end{IEEEeqnarray*}
+}
+$\mg  \textit{Beta}\left( \alpha  ~,~ \beta  \right)$ in Bayesian Statistics {$~\Longrightarrow ~$}  $~\rbl  \alpha ~$ counts the number of successes, and  $~\rbl  \beta ~$ counts the number of failures
+
+
+{\color{ctpk} \section{Distributions related to central limit theorem}}
+\paragraph{\bvl Central Limits Theorem} Sum of many \textbf{\textit{\plm  i.i.d.}} \textbf{\textit{\plm  r.v.}} looks normal
+
+\begin{align*}\mg \colorbox{byl}{$ \displaystyle 
+\lim_{\substack{n \to \infty}} P_{_{X}}\left( a \leq X \leq b \right) = P_{_{Z}}\left(~ \overbrace{\dfrac{a  -  \text{\bf E}(X)}{\text{\bf SD}(X)}}^{{\plm  a^{*}}} ~  \leq ~ ~ \overbrace{\dfrac{X - \text{\bf E}(X)}{\text{\bf SD}(X)}}^{{\plm   = Z}} ~  \leq ~ \overbrace{\dfrac{b - \text{\bf E}(X)}{\text{\bf SD}(X)}}^{{\plm  b^{*}}} ~  \right) 
+$}\end{align*}
+
+
+{\bvl\subsubsection*{ Standardization}}
+\text{\bf\cy  Z transformation or Z score}
+\begin{align*}\mg  \colorbox{byl}{$ \displaystyle
+Z =\dfrac{X - \text{\bf E}(X)}{\text{\bf SD}\!\left(X\right) } 
+$}\end{align*}
+
+\begin{align*}\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+f_{_{X}}\!\left(x\right) = \dfrac{1}{\sigma} ~  \phi_{_{Z}}\!\left(~\dfrac{X-\mu_{_{X}}}{\sigma_{_{X}}}\right)
+$}\end{align*}
+
+
+\text{\bf\cy  Notice that if the random variable is ${\emr\mathbf{\bar{X}}}$ then }\ensuremath{~\emr\Downarrow~}
+\begin{align*}
+\text{\bf E}\!\left[\overbrace{\dfrac{\sum x_{i} }{n}}^{{\plm  \bar{X}}} \right] =  \text{\bf E}(\bar{X}) = \mu \qquad \text{\bf\cy  and}\qquad 
+\text{\bf Var}\!\left[\overbrace{\dfrac{\sum x_{i} }{n}}^{{\plm  \bar{X}}} \right] =  \dfrac{\sigma^{2}}{n} { ~ \emr\implies ~ } \text{\bf SD}\!\left(X\right)  = \dfrac{\sigma}{\sqrt{n}}
+\end{align*}
+
+
+${\rbl  \scalebox{1.25}{$$}}$
+
+\begin{align*}\mg \colorbox{byl}{$ \displaystyle 
+Z =\dfrac{\bar{X} - \text{\bf E}(\bar{X})}{\text{\bf SD}\!\left(\bar{X}\right) } = \dfrac{\bar{X} - \scalebox{1.25}{$\mu$}_{_{\bar{X}}}}{\scalebox{1.25}{$\sigma$}_{_{\bar{X}}}} = \dfrac{\bar{X} - \scalebox{1.25}{$\mu$}}{\left[\frac{\sigma}{\sqrt{n}}\right]}  
+$}\end{align*}
+
+Let ${\rbl  X=a_{1}X_{1} + a_{2}X_{2}}$, where ${\rbl  X_{i}}$ are \text{\bf\emr i.i.d.} \text{\bf\emr r.v.} then \ensuremath{~\emr\Longrightarrow ~}
+\begin{align*}
+\scalebox{1.4}{$\mu$}\!{_{_{_{_X}}}}= \sum a_{i}\mu_{i} \\ 
+\scalebox{1.4}{$\sigma$}\!{_{_{_{_X}}}}{\!\!\!^{^2}} =  \sum a_{i}^{2}\sigma_{i}^{2} \\
+\end{align*} 
+
+
+\paragraph{\bvl Standard Normal} In standard normal   $~\rbl   \mu =0~$ and  $~\rbl  \sigma^{2} = 1~$ \\
+\ensuremath{\plm \textit{\textbf{N}}\left(0 ~,~ 1\right)}
+
+\text{\bf\emr pdf} \ensuremath{~\emr\Longrightarrow ~} \begin{align*}\color{ctpk} \colorbox{bbl}{$ \displaystyle 
+\phi_{_{Z}}\!\left(z\right) \coloneqq  \dfrac{1}{\sqrt{2\pi}}~e^{-\sqrt{\tfrac{1}{2}} z}
+$}\end{align*}
+ 
+
+\paragraph{\bvl Finding the normalizing constant \ensuremath{\plm  c}} in  \ensuremath{\rbl  f(z)=c~e^{-\sqrt{\tfrac{1}{2}}~z}}  
+
+\marginnote{\fcolorbox{byl}{bbl}{\mg  \begin{minipage}[c]{0.18\textwidth} \raggedright \begin{center}\small 
+Integration by parts \\ \ensuremath{\int u dv = u\left. v \vphantom{\frac{a}{b}}\right]- \int v du}
+\end{center} \end{minipage}}}[-2cm] 
+
+\begin{align*} 
+\int_{- \infty }^{ \infty }~e^{ -\tfrac{1}{2} z^{2}} dz   \int_{- \infty }^{ \infty }~e^{ -\tfrac{1}{2} z^{2}} dz &= \int_{- \infty }^{ \infty }~e^{-\frac{1}{2} x^{2}} dx  \int_{- \infty }^{ \infty }~e^{ -\tfrac{1}{2} y^{2}} dy \bigskip \\
+&=\int_{-\infty}^{+\infty}   \int_{i=0}^{\infty} ~e^{ -\tfrac{1}{2}\overbrace{(x^{2} + y^{2})}^{{\plm  = r^{2} }}\quad} dx dy  \bigskip \\
+&= \int_{\theta =0}^{ 2\pi}\int_{r=0}^{ \infty }  ~e^{ -\tfrac{1}{2} r^{2}}~ \overbrace{r}^{{\plm \textbf{\small Jacopian}}}\quad  dr d\theta
+\end{align*}
+
+
+\marginnote{\fcolorbox{byl}{bbl}{\mg  \begin{minipage}[c]{0.2\textwidth} \raggedright \begin{center}\small
+Transformation to polar coordinates
+\end{center} \end{minipage}}}[-3cm]
+
+Let \ensuremath{\emr u=\frac{1}{2} r^{2} \ensuremath{\Longrightarrow} du = rdr} 
+\[\begin{array}[c]{rcccccccc} \displaystyle
+\displaystyle \iint r ~e^{\textstyle -\frac{1}{2} r^{2}} dr d\theta &=&  \displaystyle \int_{0}^{2\pi }\left[ \int_{0}^{ \infty } ~e^{\textstyle -u}du\right] d\theta \bigskip \\
+&=& \displaystyle \int_{0}^{2\pi }~ d \theta  = 2\pi   
+\end{array}\]
+
+Therefore \ensuremath{\plm \displaystyle\quad\int_{0}^{ \infty }~ c~ e^{\textstyle -\sqrt{\frac{1}{2}}~ z} dz =\sqrt{2\pi }\qquad \ensuremath{\Longrightarrow} c = \dfrac{1}{\sqrt{2\pi } } } \\
+
+\marginnote{\fcolorbox{byl}{bbl}{\mg  \begin{minipage}[c]{0.18\textwidth} \raggedright \begin{center}\small
+Even function: ${\rbl  f(-x) = f(x)}$ \ensuremath{\Downarrow} whole integral is double the integral on one side \medskip  \\  
+Odd function:  ${\rbl  f(-x) = - f(x)}$ \\
+integral on both sides add up to zero 
+\end{center} \end{minipage}}}[-4cm] 
+
+\vspace*{20pt}
+\begin{align*}
+\text{E}(X) =\dfrac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{+\infty} z~e^{\textstyle  -\sqrt{\tfrac{1}{2} } z} dz = 0
+\end{align*}
+\marginnote{ \ensuremath{\Longleftarrow} This is an odd function}[-1cm]
+
+\begin{align*}
+\text{Var}(Z) &= \text{E}(Z^2) -\overbrace{(\text{E}(Z))^{2} }^{{\plm  =0}}\quad    \\
+\text{E}(Z^2) &=\dfrac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty} z^{2}~e^{\textstyle -\sqrt{\tfrac{1}{2} } z} dz  
+\end{align*}
+
+
+
+\paragraph{\bvl General Normal\\}
+\ensuremath{\plm \textbf{\textit{N}}\left( \mu ~,~ \sigma^{2} \right)}
+ 
+\paragraph{\bvl {\cy \textbf{\textit{cdf}}} \ensuremath{\Longrightarrow} }
+\begin{align*}
+p\left(X \leq x\right) &=  p\left(\tfrac{X - \mu}{\sigma} \leq\tfrac{x - \mu}{\sigma} \right) \\
+&=p\left(Z \leq\tfrac{x - \mu}{\sigma} \right) = \Phi\left(\tfrac{x - \mu}{\sigma} \right) 
+\end{align*}
+
+ \[
+ yf(x) \coloneqq \sum_{i=1}^{n} 
+ \]
+\begin{align*}\mg  \colorbox{byl}{$ 
+{\cy \textbf{\textit{cdf}}}\qquad   \Phi\left(\dfrac{x - \mu}{\sigma} \right)
+$}\end{align*}
+\paragraph{\bvl {\cy \textbf{\textit{pdf}}}  \ensuremath{\Longrightarrow} }
+\begin{align*}
+\frac{d \Phi }{d x} =\overbrace{\Phi^{'}\left(\tfrac{x - \mu}{\sigma} \right)}^{{\plm  {\rbl \textbf{\textit{{\cy \textbf{\textit{pdf}}}  }}}  =~  \phi\left(z=\tfrac{x - \mu}{\sigma} \right) }}\quad   \dfrac{1}{  \sigma } \\ =\dfrac{1}{ \sigma }~ \dfrac{1}{\sqrt{2\pi}}~e^{\textstyle -\sqrt{\tfrac{1}{2} }~ \tfrac{x - \mu}{\sigma} } 
+ \end{align*}
+\begin{align*}\mg  \colorbox{byl}{$ \displaystyle
+f_{\!_{X}}\!\left(x\right) = \dfrac{1}{\sigma_{\!_{X}}} ~ \phi_{\!_{Z}}\!\left(~\frac{X-\mu_{_{X}}}{\sigma_{\!_{X}}}\right)= \dfrac{1}{ \sigma }\dfrac{1}{\sqrt{2\pi}}~e^{\textstyle -\sqrt{\tfrac{1}{2} } \tfrac{x - \mu}{\sigma} } 
+$}\end{align*}
+ \bigskip 
+Sum and difference of  ${\rbl  \left\{ X_{1}, X_{2}, X_{3}, \dots , X_{n}\right\} }$   \textbf{\textit{\plm  i.i.d.}} \textbf{\textit{\plm  r.v.}}, then: \\ 
+\ensuremath{\Longrightarrow}\qquad \ensuremath{\plm  X_{i} + X_{j}   \sim \textbf{\textit{N}}\left( \mu_{i} +  \mu_{j}   ~,~ \sigma^{2}_{i} + \sigma^{2}_{j}  \right)}  \\
+\ensuremath{\Longrightarrow}\qquad \ensuremath{\plm  X_{i} - X_{j}   \sim \textbf{\textit{N}}\left( \mu_{i} -  \mu_{j}   ~,~ \sigma^{2}_{i} + \sigma^{2}_{j}  \right)}  \\
+
+\paragraph{\bvl 68-95-99.7\% Rule} corresponds to 1, 2, 3 SD
+\begin{align*}
+p\left( \left|x -  \mu\right|   \leq  \sigma  \right) &=   68\% \\ 
+p\left( \left|x -  \mu\right|  \leq  2\sigma  \right) &=   95\% \\ 
+p\left( \left|x -  \mu\right|  \leq   3\sigma  \right) &=   99.7\% 
+\end{align*}
+
+\text{\bf\cy  Continuity Correction}
+\begin{align*}
+P_{Z}\left( a \leq Z \leq b \right) &= \int_{a - 0.5}^{b + 0.5} \phi_{_{Z}}\left(z\right) dz \\
+&= \Phi_{_{Z}}\left(b + 0.5\right) - \Phi_{_{Z}}\left(a - 0.5\right)
+\end{align*}
+\text{\bf\cy  Minimum n for normal approximation} ${\emr\implies}$ ${\rbl  n > 9 \tfrac{p}{1 - p}}$ for the larger p
+
+\vspace*{20pt} {\bvl\subsubsection*{ MGF for normal}}
+\begin{align*}\mg \colorbox{byl}{$ \displaystyle 
+M_{_{Z}}(t) \coloneqq ~e^{t \mu + \tfrac{1}{2}\sigma^{2}t^{2}}~
+$}\end{align*}
+
+\vspace*{20pt} 
+
+{\wsb\subsection*{  {$ \chi^{2} $} distribution {$~\Longrightarrow ~$} making inference on population variance }} 
+
+\ensuremath{\plm  \mathbf{\chi^{2}}(\nu)} in which ${\plm  \mathbf{\chi^{2}}(\nu)}$ ${\emr\iff}$${\plm  \mathbf{\Gamma}\left(\lambda~,~r\right)}$ where:  $~\rbl  \lambda = \frac{1}{2} ~$ and  $~\rbl  r = \frac{\nu }{2}  ~$ 
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+f\left(x\right) \coloneqq \dfrac{x^{ 0.5\nu -1 } ~ e^{0.5x}  }{2^{0.5 \nu } ~ \Gamma(0.5\nu ) }  \qquad \forall ~ x  \geq 0
+$} 
+\end{IEEEeqnarray*}}
+
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+\mu = \nu \\
+\sigma^{2} = 2\nu \\
+m(t) = \left(1-2t\right)^{0.5 \nu } 
+\end{IEEEeqnarray*}
+}
+
+{\wsb\subsection*{ Student's \textit{T}-distribution {$~\Longrightarrow ~$} inference on variance in small population}}
+$\mg  \textit{T}\left( \nu \right)$ 
+
+{\color{ctpk}
+\begin{IEEEeqnarray*}{LLLLLLLLLLLLL}
+\colorbox{bbl}{$ \displaystyle 
+f\left(x\right) \coloneqq \dfrac{\Gamma\left( 0.5 \nu + 0.5\right) }{\sqrt{\pi \nu } ~ \Gamma(0.5 \nu ) \left(1 + \frac{x^{2} }{\nu } \right)^{(0.5\nu + 0.5)}   }  \qquad \forall ~ x \in \mathbb{R}
+$} 
+\end{IEEEeqnarray*}}
+
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+\overbrace{X}^{{\emr{\textit{T}\left( \nu \right) }}}  = \dfrac{\overbrace{Y}^{{\emr{ \textit{N}\left( 0 ~,~ 1 \right)}}} }{\sqrt{ \dfrac{\overbrace{Z}^{{\emr{  \chi\left(\nu\right)  }}} }{\nu } } } 
+\end{IEEEeqnarray*}
+}
+
+{\color{pagebl}
+\begin{IEEEeqnarray*}{LLLLLLLL}
+\mu = 0 \\
+\sigma^{2} = \frac{\nu }{\nu -2} for \nu  \geq 2  
+\end{IEEEeqnarray*}
+}
+
+
+{\wsb\subsection*{ Snedecor-Fisher's \textit{F}-distribution {$~\Longrightarrow ~$} comparing the variance of 2 populations}}
+$\mg  \textit{F}\left( \nu_{1}   ~,~ \nu_{2} \right)$ in which  $~\rbl  Y~$ and  $~\rbl  Z~$ are independent  $~\rbl   \chi^{2} ~$ random variable.  $~\rbl  X = \frac{ \,^{Y}\!/\!_{\nu_{1} }}{ \,^{Z}\!/\!_{\nu_{2} }} ~$  \\
+If   $~\rbl  X~$ is $\mg  \textit{T}\left( \nu \right)$, then {$~\Longrightarrow ~$}  $~\rbl   \chi^{2}~ \sim ~ ~$ $\mg  \textit{F}\left( 1 ~,~ \nu  \right)$   
+
+\begin{IEEEeqnarray*}{RLLLLLLLLLLLL} \color{ctpk}\colorbox{bbl}{$ \displaystyle 
+f\left(x\right) \coloneqq \dfrac{1}{B\left( \frac{\nu_{1}  }{2}  ~,~  \frac{\nu_{2} }{2} \right)}  \dfrac{ \left( \frac{\nu_{1} }{\nu_{2} } \right)^{0.5 \nu_{1}} ~ x^{0.5 \nu_{1}-1 } }{ \left(1 + \frac{\nu_{1} }{\nu_{2} } x \right)^{0.5 (\nu_{1} + \nu_{2}  )}  }  \qquad \forall ~  x > 0
+$} \end{IEEEeqnarray*}
+
+\begin{IEEEeqnarray*}{RLLLLLLLLL}
+\mu = \frac{\nu_{2} }{\nu_{2} -2 } \qquad \forall ~ \nu_{2} >2 \\
+\sigma^{2} = \frac{2\nu_{2}^{2}(\nu_{1} + \nu_{2} -2  )  }{\nu_{1} (\nu_{2} -2 )^{2} (\nu_{ 2} -4 )  } 
+\end{IEEEeqnarray*}
+
+\vspace*{40pt}
+{\color{Magenta} \section{Regular Expressions}}
+\text{\bf\color{Cyan} Identifiers}
+\begin{lstlisting}
+\d any number
+\D anything but a number
+\s space
+\S anything but a space
+\w any character
+\W anything but a character
+. anything except newline
+\. search for a period
+\b white space around words
+\end{lstlisting}
+
+\text{\bf\color{Cyan} Modifiers}
+\begin{lstlisting}
+{1,3} from one up to 3 in length, example \d{1,3} a digit from 1 to 3
++ match one or more
+? match zero or one
+* match zero or more
+$ end of string
+^ beginning of string
+| either or
+[ ] range or "variance", example: [A-Z] Letter ranges from A to Z
+{4} expecting 4 matches
+\end{lstlisting}
+
+\text{\bf\color{Cyan} White Space Characters}
+\begin{lstlisting}
+\n newline
+\s space
+\t tab
+\e escape
+\f form feed
+\r return character
+\end{lstlisting}
+
+
+\text{\bf\color{Cyan} Must be escaped:}
+\begin{lstlisting}
+. + * [ ] $ ^ ( ) { } | \ '''
+\end{lstlisting}
+
+
+\newpage
+\vspace*{40pt}
+{\color{Magenta} \section{Python}}
+
+\text{\bf\color{Cyan} Casting}
+\begin{lstlisting}
+str() float() int()
+\end{lstlisting}
+
+
+\vspace*{20pt}
+{\color{WildStrawberry} \subsection*{Working with files}}
+\text{\bf\color{Cyan} Writing/Appending/Reading files}
+\begin{lstlisting}
+text = "\nSample Text\nSecond Line"
+for writing: openFile = open("/Users/gpl/Dropbox/work/file.txt", 'w')
+for appending: openFile = open("/Users/gpl/Dropbox/work/file.txt", 'a')
+for reading the whole file: openFile = open("/Users/gpl/Dropbox/work/file.txt", 'r').read()
+for reading as lines: openFile = open("/Users/gpl/Dropbox/work/file.txt", 'r').readLines()
+openfile.write(text)
+openfile.close()
+\end{lstlisting}
+
+\text{\bf\color{Cyan} Working with CSV}
+\begin{lstlisting}
+import csv
+with open("/Users/gpl/Dropbox/work/file.csv") as csvFile:
+    OpenCSV = csv.reader(csvFile, delimiter=",")
+    
+\end{lstlisting}
+
+
+{\color{Magenta} \section{GIT Commands}}
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= GIT Commands \hfill ,coltitle=Magenta,fonttitle=\bfseries,coltext=Black, width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}
+\vspace{\baselineskip}
+confirming username and email settings\\[\baselineskip]
+creating copy of a repo: \\
+-create directory \\
+-go to the directory you created \\
+-initialize local git repo\\
+-connect local to remote repo\\[\baselineskip]
+clone forked remote repo into local directory\\[\baselineskip]
+Add all new files/update name changes deletion to local index\\[\baselineskip]
+Commit changes to local repo\\[\baselineskip]
+push local changes to remote repo\\[\baselineskip]
+Branching a copy to avoid editing remote repo\\
+To see what branch you are on\\
+To switch back to master branch
+\end{minipage}}\qquad\begin{minipage}[t]{0.664\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+git config --list
+
+
+mkdir ~/<directory name>
+cd ~/<directory name>
+git init
+git remote add origin <remote repo url>
+
+
+git clone <url of remote forked repo>
+
+
+git add -A
+
+
+git commit -m "message about changes"
+
+git push
+
+
+git checkout -b <branchname>
+
+git branch
+git checkout master
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+
+
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= Markdown Syntax \hfill ,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+Headings\\[\baselineskip]
+smaller "sub" heading\\[\baselineskip]
+dot list
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+## <heading title>
+
+### <smaller/sub heading>
+
+* <first item>
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+\newpage
+\paragraph{\color{RoyalBlue}{Dealing with confounding}\\}
+\begin{enumerate}
+\item fix the variable \\
+\item stratify match sampling based on proportion of each strata in a population \\
+\item randomization 
+\end{enumerate}
+
+
+{\color{Magenta}\bf Sensitivity} Positive test | disease i.e. positive is meaningful\\
+{\color{Magenta}\bf Specificity} Negative test | no disease i.e. negative is meaningful \\
+{\color{Magenta}\bf Positive Predictive Value} Disease | positive test \\
+{\color{Magenta}\bf Negative Predictive Value} No disease | negative test \\[\baselineskip]
+
+
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R \hfill ,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+class of objects\\[\baselineskip]
+getting class of an object\\[\baselineskip]
+Explicit coercion - casting\\[\baselineskip]
+initializing vector\\
+Others\\[\baselineskip]
+assigning a list\\[\baselineskip]
+changing elements in a list\\[\baselineskip]
+matrix creation\\[3\baselineskip]
+changing dimensions\\[\baselineskip]
+factor creation\\[\baselineskip]
+freq of each level\\[\baselineskip]
+baseline levels are alphabetical unless specified\\[\baselineskip]
+Missing Values: NaN for undefined mathematical operations, NA for anything else. NULL nothing there. Testing 
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+numeric logical character integer complex
+
+class(object)
+
+as.<class>(object)
+
+x<-vector("class",length = <number>)
+numeric(<n>) logical(<n>) logical(<n>)
+
+x<-list(<items>)
+
+x[[<item index>]][<element index>] = <new element>
+
+m <-matrix(<data>, nrow = <n>, ncol = <n>)
+cbind(x,y)
+rbind(x,y)
+
+dim(<matrix or vector>) <- c(<nrow> , <ncol>)
+
+f <- factor(c("<data>"),levels=c("<level order>"))
+
+table(f)
+
+
+
+
+is.na(<object>)
+is.nan(<object>)
+NULL
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R  \hfill Data Frames,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+data frames are list with each element has the same length\\[\baselineskip]
+Creating data frames\\[2\baselineskip]
+number of rows/columns\\[\baselineskip]
+naming of objects\\[\baselineskip]
+
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+
+
+
+read.table() read.csv() read.matrix()
+x <- data.frame(<colname> = <coldata>, 
+				<colname> = <coldata>)
+
+ncol(x) nrow(x)
+
+names(<object>) = c("name1", "name2",...)
+x  <- list(a=1, b="hello", c=FALSE)
+dimnames(m) <- list(c("rownames"), c("colnames"))
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R \hfill Reading Data,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+tabular\\[\baselineskip]
+reading lines in text file\\[\baselineskip]
+reading R code\\[\baselineskip]
+reading workspace
+reading R objects in binary form
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+read.table read.cv
+
+readLines
+
+source
+
+load
+
+unserialize
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R  \hfill Reading Table,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+table has default sep as space, while CSV is comma
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+read.table(file, header=TRUE, 
+sep=" ",colClasses=c("colclasses"),
+nnrows=<n>, comment.char="#",
+skip=<n>,stringAsFactors=TRUE)
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+
+\newpage
+\paragraph{\color{RoyalBlue}{Optimizing reading large datasets}\\}
+\begin{enumerate}
+\item read read.table \\
+\item calculate required memory \\
+\item set comment.char="" if no comments \\
+\item important: specify colclasses \\
+\item nrows help with memory usage
+\end{enumerate} 
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R \hfill Textual Data dput dget dump,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+storing data in recoverable textual data format\\[\baselineskip]
+display the data\\[\baselineskip]
+store the data\\[\baselineskip]
+restore the data\\[\baselineskip]
+used on multiple objects
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+
+
+
+dput(object)
+
+dput(object, file="file.R")
+
+dget("file.R")
+
+dump(c('object1', 'object2'), file="file.R")
+source("file.R")
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R \hfill File connection,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+function description\\[\baselineskip]
+file function\\[4\baselineskip]
+same as:\\[\baselineskip]
+other files\\[\baselineskip]
+read lines\\[\baselineskip]
+reading url
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+str(<function>)
+
+connection <- file(description = "file name", open="r/w/a", 
+blocking=TRUE,enccoding=getOption("encoding"))
+data <- read.csv(connection)
+close(x)
+
+data <- read.csv("file name")
+
+gzfile() bzfile() url()
+
+readLines(connection, <n lines>)
+
+connection <- url("url", "r")
+x <- readLines(connection)
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+
+
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R \hfill Subsetting,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+Using single [ return the same class as the original\\[4\baselineskip]
+double [[ return just the elements\\[2\baselineskip]
+name of elements, \$ do partial matching\\[\baselineskip]
+extracting multiple\\[2\baselineskip]
+subsetting matrix without losing dimensions\\[\baselineskip]
+ignoring exact match\\[\baselineskip]
+subsetting data frame
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+x <- c("a", "b", "c", "c", "a", "k")
+x[x<"c"]
+u <- x < "c"
+x[u]
+
+
+x <- list(foo=1:4, bar=c("a", "b", "c", "d"))
+x[1] --> list
+x[[1]] --> elements (int)
+
+x$foo=x[["foo"]]
+x[1]==x["foo"]
+
+x <- list(foo=1:3, bar=1:10, baz=3:4)
+x[c(1,3)] --> foo, baz
+
+x <- matrix(1:6, 2, 3)
+x[2,,drop=FALSE] --> matrix
+
+x[["fo", exact=FALSE]]
+
+df[<rows 2:3>, <col 1:10>]
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R \hfill Removing missing NA values,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+involve creating logical vector to map where the missing values are, then subsetting\\[2\baselineskip]
+compare two lists to see whether any missing values for either the two lists\\[2\baselineskip]
+missing data in data frames\\[2\baselineskip]
+first, last elements\\[\baselineskip]
+remove NA in predefined functions\\[2\baselineskip]
+removing NA from a dataset
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+x=vector
+u=is.na(x)
+x[!u]
+
+
+x <- c(1, 2, NA, NA, 7)
+y <- c("a", "b", "h", NA, "k")
+goodxy = complete.cases(x,y)
+.......= true, true, false, false, true
+
+u <- complete.cases(<df>)
+gooddf <- df[u,]
+
+head(<vector>, <n>) or tail(<vector>, <n>)
+
+mean(x, na.rm=TRUE)
+
+
+
+na.omit(<dataset>)
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R \hfill If While repeat next break return,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+If\\[4\baselineskip]
+For Loop\\[\baselineskip]
+generate index of a sequence\\
+generate an index seq of size n\\[\baselineskip]
+random number between 0 \& 1\\[\baselineskip]
+infinite loop\\[4\baselineskip]
+skipping some iterations\\[3\baselineskip]
+changing some arguments of a predefined function and passing on the remaining usual arguments. Also used in generic function OOP to dispatch methods for different kind of data
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+y <- if (<condition>){
+}else if (<condition>){
+}else{
+}
+
+for (i in <source>){}
+
+seq_along(<vector>)
+seq_len(<n>)
+
+runif(n, min=0, max=1)
+
+repeat{
+	if (<condition>) break
+	else 
+}
+
+for (<condition>){
+	if (<condition>) next
+}
+
+
+myplot <- function(x,y,type="l",...){
+	plot(x,y,type=type,...)
+}
+
+
+
+.
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+
+\vspace{\baselineskip}
+\text{{\color{Magenta} \bf Lexical Scoping: }} Variables/functions are defined where they are originally defined. R uses lexical scoping.\\
+\text{{\color{Magenta} \bf Dynamic Scoping: }} Variables/functions are defined where they called (calling environment).\\
+
+{\color{Cyan}\bf strptime:} function used to changing format of dates to POSIXlt\\
+\text{{\color{Cyan} \bf as.Date, as.POSIXlt, as.POSIXct("date", tz="GMT") }} Used for time conversion and operations. Date is a date class. POSIXct and POSIXlt are time class.
+
+
+
+\begin{tcolorbox}[colback=pageyl,colframe=pagebl,title= R \hfill Looping Functions,coltitle=Magenta,fonttitle=\bfseries,coltext=Black,width=0.9\paperwidth,boxrule=2mm]\colorbox{pageyl}{\noindent\begin{minipage}[t]{0.3\textwidth}\sffamily \color{ctnb}\vspace{\baselineskip}
+lapply: loop over a list, return a list \\
+Defining/using anonymous function within lapply\\[\baselineskip]
+sapply: simplify results\\[\baselineskip]
+apply: apply a function over the margins of an array/matrix margin can be 1 for rows \\
+ rowsums, rowmeans are efficient \\[\baselineskip]
+tapply: apply function over a subsets of a vector\\[\baselineskip]
+mapply: multivariate version of lapply\\[\baselineskip]
+Split: used to split matrix into lists of columns/rows
+\end{minipage}}\qquad\begin{minipage}[t]{0.672\textwidth}
+{\lstset{backgroundcolor=\color{pagepp},numberstyle=\tiny}\begin{lstlisting}[frame=single,framerule=0pt, numbers=none, numbersep=10pt, aboveskip=20pt,belowskip=20pt]
+lapply(x, FUN, ...)
+lapply(x, function(m) m[,])
+
+mapply(<function>, <seq1>, <seq2>)
+rep(<object>, <n times>)
+
+noise(n, mean, sd)
+
+gl(<levels>, <how many observation in each level>)
+
+x <- list(rnorm(10), runif(10), rnorm(10, 1))
+factor = gl(3, 10)
+split(x, factors, drop=FALSE <if > one factor used>)
+\end{lstlisting}}\end{minipage}\end{tcolorbox}
+
+
+
+\paragraph{\color{RoyalBlue}{RegEx}\\}
+\begin{enumerate}
+\item beginning of a line \colorbox{pagelm}{\color{Magenta}\lstinline+^+} end of a line \colorbox{pagelm}{\color{Magenta}\lstinline+$+}  empty line \colorbox{pagelm}{\color{Magenta}\lstinline+^$+}  \\
+\item match alternative spelling/capitalization \colorbox{pagelm}{\color{Magenta}\lstinline+[...]+} "-" means range, match A-Z \colorbox{pagelm}{\color{Magenta}\lstinline+[A-Z]+}  match a-z \colorbox{pagelm}{\color{Magenta}\lstinline+[a-z]+}  match 0-9 \colorbox{pagelm}{\color{Magenta}\lstinline+[0-9]+}  match special characters \colorbox{pagelm}{\color{Magenta}\lstinline+[_!.?]+}  \\
+\item Negation \colorbox{pagelm}{\color{Magenta}\lstinline+[^...]+}  q Not followed by a \colorbox{pagelm}{\color{Magenta}\lstinline+q[^a]+}  \\
+\item match anything \colorbox{pagelm}{\color{Magenta}\lstinline+.+}  date \colorbox{pagelm}{\color{Magenta}\lstinline+07.02.1979+}  \\
+\item Alternative match \colorbox{pagelm}{\color{Magenta}\lstinline+(...|...)+} Becca or Rebecca \colorbox{pagelm}{\color{Magenta}\lstinline+(Becca|Rebecca)+}  \\
+\item Match beginning/end of a word \colorbox{pagelm}{\color{Magenta}\lstinline+\<...\>+}  the word cat \colorbox{pagelm}{\color{Magenta}\lstinline+\<cat\>+}  the word ending in cat \colorbox{pagelm}{\color{Magenta}\lstinline+cat\>+}  \\
+\item Optional match \colorbox{pagelm}{\color{Magenta}\lstinline+(...)?+}  color or colour \colorbox{pagelm}{\color{Magenta}\lstinline+colou?r+}  4th or 4 \colorbox{pagelm}{\color{Magenta}\lstinline+4(th)?+} \\
+\item Match anything any length \colorbox{pagelm}{\color{Magenta}\lstinline+.*+} \\
+\item Match a dot. \colorbox{pagelm}{\color{Magenta}\lstinline|\\.|} \\
+\item Match at least one \colorbox{pagelm}{\color{Magenta}\lstinline+++}   \\
+\item Case insensitive egrep \colorbox{pagelm}{\color{Magenta}\lstinline+egrep -i "<expression>" <file>+} 
+\end{enumerate}
+
+
+\part{Statistical Learning Review}
+
+\section{Notation}
+Data can be represented as predictors denoted as $x_{ij}$ and response denoted as $y_{i}$ \[ x_{ij} \quad \forall  \quad i \in \{1, 2, \dots, n\} \quad j \in \{1, 2, \dots, p\} \]
+$x_{ij}$ means the $j^{th}$  predictor in the $i^{th}$ observation\\
+$y_{i}$ means the response in the $i^{th}$ observation\\
+A general equation can be written as:
+\[ 
+y_{i}= \sum_{j=1}^{p} \beta_{k} x_{ij}
+\]
+Where  $\beta$ are the parameters \\
+Example: Given that we have 4 predictors (i.e. $p=4$), and we repeat the experiment twice (i.e observations $n=2$) and measured a certain response $y_{i}$ in each observation, then:
+\begin{align}
+ \beta_{0} + \beta_{1}x_{11} + \beta_{2}x_{12} + \beta_{3}x_{13} + \beta_{4}x_{14} &= y_{1} \label{eq: alphaybetax1}\\
+ \beta_{0} + \beta_{1}x_{21} + \beta_{2}x_{22} + \beta_{3}x_{23} + \beta_{4}x_{24} &= y_{2} \label{eq: alphaybetax2}
+\end{align}
+Equations $\eqref{eq: alphaybetax1}$ and $\eqref{eq: alphaybetax2}$ can be written in matrix form: 
+
+\begin{align}
+\overbrace{
+\begin{bmatrix}
+&1 & x_{11} & x_{12} & x_{13} & x_{14} \\
+&1 & x_{21} & x_{22} & x_{23} & x_{24} 
+\end{bmatrix} }^{m \times n \quad  2 \times 5 \quad \in \mathbb{R}^5 }
+\times
+\overbrace{ \begin{bmatrix}
+& \beta_{0} \\& \beta_{1} \\& \beta_{2} \\& \beta_{3} \\& \beta_{4} 
+\end{bmatrix} }^{\vec{\beta} \in \mathbb{R}^{1}}
+=
+\begin{bmatrix}
+&  y_{1} \\ & y_{2}
+\end{bmatrix}
+\end{align}
+Transposing matrix:  $\mathbb{R}^n \to \mathbb{R}^m $
+
+\section{Parameter Estimation}
+\subsection{Least Square Estimator}
+If The data we collect, consists of predictor $x_{i}$ and response $y_{i}$ and we collected $i$ samples; and we assumed that the data follows a linear model, the then the line of best fit can be written as:
+$$\hat{y}=\hat{\beta_{0}}+\hat{\beta_{1}} x_{i}$$
+\textbf{Our Goal is: } to find $\hat{\beta_{0}}, \hat{\beta_{1}}$ so that the sum of the vertical distances between all data points and our line model is minimum.
+\textbf{That is: }
+$$\sum y_{i}-\hat{y}= \sum y_{i}-(\hat{\beta_{0}}+\hat{\beta_{1}} x_{i})  \to \textbf{minimum}$$
+Since the difference will add up to zero, we will minimize the the square of the difference from $i=1$ to $i=n$. 
+\begin{align}
+\sum_{i}^{n} (y_{i}-\hat{y})^{2} &= \sum_{i=1}^{n}(y_{i}-(\hat{\beta_{0}}+\hat{\beta_{1}}x_{i})^{2}  \to \textbf{Let's call the left side $r$ for residual error}\\
+\end{align}
+
+\textbf{To minimize $r$, we need to take the derivative and equate it to zero. Then we take the partial derivative of $r$ with respect to $\hat{\beta_{0}}$ and $\hat{\beta_{1}}$}
+
+\begin{align*}
+\dfrac{\partial r}{\partial \hat{\beta_{0}}} &= \sum_{i=1}^{n} \dfrac{\partial r}{\partial \hat{\beta_{1}}} (y_{i}-\hat{\beta_{0}}-\hat{\beta_{1}} x_{i})^{2} =0 \\
+&= -2 \sum_{i=1}^{n}  (y_{i}-\hat{\beta_{0}}-\hat{\beta_{1}} x_{i})  \\
+\dfrac{\partial r}{\partial \hat{\beta_{0}}} &= \sum_{i=1}^{n} \dfrac{\partial r}{\partial \hat{\beta_{1}}}  (y_{i}-\hat{\beta_{0}}-\hat{\beta_{1}} x_{i})^{2} =0 \\
+&= -2\sum_{i=1}^{n} x_{i}(y_{i}-\hat{\beta_{0}}-\hat{\beta_{1}} x_{i}) 
+\end{align*}
+Given the following relationship:
+\begin{align*}
+\sum_{i}^{n} x_{i} = n \bar{x} \\
+\sum_{i}^{n} y_{i} = n \hat{y}\\
+\end{align*}
+Then,
+\begin{align*}
+\hat{\beta_{0}} &= \hat{y}-\hat{\beta_{1}} \bar{x} \\
+\hat{\beta_{1}} & = \dfrac{\displaystyle \sum_{i=1}^{n} x_{i} y_{i}  -  n \hat{y}\bar{x} }{\displaystyle \sum_{i=1}^{n}  x_{i}^{2} - n\bar{x}^{2}}\\
+\end{align*}
+
+\subsection{Maximal Likelihood Estimate MLE }
+Again, we assume that our model is linear and takes the form: $\hat{y}=\hat{\beta_{0}}+\hat{\beta_{1}}x + \epsilon$. \\
+More Generally:  \[
+\hat{y}= \sum_{i} \hat{\beta_{i}}x_{i}
+\]
+Assuming that each observation is independent and identically distributed according to a normal distribution, then the density function of such observations can be given as following:
+\begin{align*}
+&p(\hat{y}| x_{i}, \beta, \sigma^{2})= \dfrac{1}{\sigma \sqrt{2\pi}} e^{-\dfrac{(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i})^{2}}{2\sigma^{2}}}\\
+&L(\beta, \sigma) =\prod_{i}^{n} \dfrac{1}{\sigma \sqrt{2\pi}} e^{-\dfrac{(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i})^{2}}{2\sigma^{2}}} \\
+&L(\beta, \sigma) = (\sigma \sqrt{2\pi})^{-n} e^{- \dfrac{(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i})^{2}}{2\sigma^{2}}} \\
+&\ln (L) = \dfrac{-1}{2\sigma^{2}} (y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i})^{2} - n\ln(\sigma) -n\ln(\sqrt{2\pi})\\
+\textbf{Taking the first and second derivative } \\
+&\dfrac{\partial L}{\partial \beta_{0}}= \dfrac{-1}{2\sigma^{2}} (2)(-1)(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i}) -0=0\\
+&\hat{\beta_{0}}=y_{i}-\hat{\beta}_{1}x_{i}\\
+&\dfrac{\partial L}{\partial \beta_{1}}= \dfrac{-1}{2\sigma^{2}} (2)(-x_{i})(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i}) -0=0\\
+& \mathbf{\beta_{1} = \dfrac{\hat{y}}{x_{i}} }\\
+&\frac{\partial L}{\partial^{2} \beta_{1}}=  \dfrac{-n x_{i}^{2} }{\sigma^{2}}\\
+&\frac{\partial L}{\partial \sigma^{2}} = \dfrac{1}{2\sigma^{4}} (y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i})^{2} -\dfrac{n}{2\sigma^{2}}\\
+&\frac{\partial L}{\partial \sigma^{2}} = \dfrac{1}{\sigma^{4}} (y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i})^{2} -\dfrac{n}{\sigma^{2}}\\
+&\mathbf{\sigma^{2}= \dfrac{1}{n} (y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i})^{2}}\\
+&\frac{\partial L}{\partial^{2} \sigma^{2}} =  \dfrac{-1}{\sigma^{6}} (y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i})^{2} +\dfrac{n}{\sigma^{4}}=0\\
+&\sigma^{2}=(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i})^{2} 
+\end{align*}
+
+
+\subsection{Estimating the accuracy of $\hat{\mu}$ and the parameters}
+\paragraph{Sample Variance } Denoted  $\mathbf{s^{2}}$ for a sample and $\mathbf{\sigma^{2}}$ for population 
+\begin{align*}
+&\textbf{Population Var}(X) \quad \sigma^{2}  = \mathbf{ \dfrac{\sum (x_{i}-\bar{x})^{2}}{n}}=E(x_{i}^{2}) -\bar{x}^{2}\\
+\\
+&\textbf{Sample Variance }\mathbf{s^{2}= \dfrac{\sum (x_{i}-\bar{x})^{2}}{n-1}}=\dfrac{\sum x_{i}^{2} - \dfrac{(\sum x_{i})^{2}}{n}}{n-1}
+\\
+\end{align*}
+
+\paragraph{Sample Standard Deviation} It's the square root of variance, denoted $\mathbf{\sigma}$ for a population and $\mathbf{s}$ for a sample
+\[
+\mathbf{s= \sqrt{\dfrac{\sum (x_{i}-\bar{x})}{n-1}}}
+\]
+
+\paragraph{Standard Error}
+Standard Error of a sample of size $n$ is: \textbf{SE }$=\dfrac{\textbf{Sample SD}}{\sqrt{n}}$\\
+Standard Error of an estimated parameter is the square root of the estimated error in such parameter: $\mathbf{\hat{\textbf{S}}_{e} = \sqrt{\hat{\sigma}^{2}}}$
+\paragraph{Accuracy of the Mean $\hat{\mu}$}
+\begin{align*}
+\textbf{SE}(\hat{\mu}^{2}) &=\dfrac{1}{n} \times  \textbf{Var}(\hat{\mu}^{2}) =\dfrac{1}{n} \times  \sigma^{2}  \\
+\textbf{Sample Var}(X) &= \sigma^{2}  =\dfrac{1}{n}\sum_{i=1}^{n} (x_{i}-\bar{x})^{2}\\
+\textbf{Sample Var}(X) &= \sigma^{2}  = E(x_{i}^{2}) -\bar{x}^{2}\\
+\textbf{Sample Var}(X) &= \sigma^{2}  = E(x_{i}^{2}) -\hat{\mu}^{2}\\
+\\
+\textbf{Cov}(X_{1}, X_{j}) &=\overbrace{E(X_{i}X_{j})}^{E(X_{i})E(X_{j}) \textbf{ if independent}}-E(X_{i})E(X_{j})
+\end{align*}
+\paragraph{Accuracy of the parameters $\hat{\beta_{0}}, \hat{\beta_{1}}$}.\\
+Residual Standard Error \textit{RSE} $\sigma^{2}=\sqrt{\dfrac{\textit{RSS}}{n-2}}$
+\begin{align*}
+\textbf{SE}(\hat{\beta_{0}}^{2}) &= \dfrac{1}{n} \times \textbf{Var}(\hat{\beta_{0}}^{2})\\
+\textbf{Given } \hat{\beta_{0}} &= \hat{y}-\hat{\beta_{1}} \bar{x} \\
+\textbf{SE}(\hat{\beta_{0}}^{2}) &=\sigma^{2}\left[\dfrac{1}{n} + \dfrac{\bar{x}^{2}}{\sum_{i=1}^{n} (x_{i}-\bar{x})^{2}}\right]\\
+\textbf{Given }\hat{\beta_{1}} & = \dfrac{\displaystyle \sum_{i=1}^{n} x_{i} y_{i}  -  n \hat{y}\bar{x} }{\displaystyle \sum_{i=1}^{n}  x_{i}^{2} - n\bar{x}^{2}}\\
+\textbf{SE}(\hat{\beta_{1}}^{2}) &=\left[\dfrac{\sigma^{2}}{\sum_{i=1}^{n} (x_{i}-\bar{x})^{2}}\right]
+\end{align*}
+
+
+\section{\color{Magenta}{General}\\}
+\begin{description}
+\item[\&] running command in the background  \\
+\item[>] redirect  \\
+\item[>\,>] redirect and append  \\
+\item[|] piping  \\
+\item[||] execute right command if left fails  \\
+\item[\&\&] execute right command if left fails   \\
+\item[testing] [ condition ] \&\& command test if condition is true, do command \\
+\item[<\,<] taking input from a file  \\
+\item[2>] redirect standard error only  \\
+\item[find /dir -name file > resultsfile 2>errorfile] /dev/null is a blackhole  \\
+\item[nohup command \&] runs command in the background even after logging off  \\
+\item[ls -d -f] match file or directory  \\
+\item[ln -s sourcefilename destinationfilename] creating soft link  \\
+\item[ ls -li] gives more information about the address on hard drive  \\
+\item[tar -cvf file.tar sourcedirectory] create verbose file tar  \\
+\item[tar -tf file.tar] look and see inside the tar file  \\
+\item[tar -xvf file.tar] extract/untar unzip the tar file  \\
+\item[gzip -v file.tar] compress tar file  \\
+\item[gunzip -v file.tar] decompress tar file, become file.tar.gz  \\
+\item[bzip2/bunzip2 file] zip/unzip files and they become file.tar.gz  \\
+\item[tar -czvf or tar -civf file.tar.gz sourcedirectory] tar then zip, z for gzip and i for bzip2  \\
+\item[tar -xivf -xzvf file.tar.gz] unzip file  \\
+\item[kill -15 or -9 processid] kill gently 15 or violently 9 a process  \\
+\item[crontab -e] edit crontab file, scheduling task
+\end{description}
+
+\vspace{20pt}
+\subsection{\color{Magenta}{RegEx}\\}
+\begin{description}
+\item[\^\,] beginning of a line \\
+\item[\$] end of line  \\
+\item[.] match anything date is 08.20.1979  \\
+\item[(option1 | option2)] match either option1 or option2  \\
+\item[cat>] a word ending in cat  \\
+\item[<cat] a word begin with cat  \\
+\item[()?] optional colou?r 4(th)?  \\
+\item[$\backslash$.] match a dot\\
+\item[*] zero or more previous character  \\
+\item[+] at least one or more previous character, extended, require -E in grep  \\
+\item[[]] replace any ONE single character inside   \\
+\item[grep -i expression file] case insensitive expression\\
+\item[sort] then the file name, note you have to use different file name as output  \\
+\item[sed] stream editor, no file changes, works like a function. sed -e action1 -e action2 > output or sed -f actionfile > output. actionfile needs to include ' ' single quotes around each action  \\
+\item[/s] substition one occcurance on each line sed -E -e `s/foo/bar/' file  \\
+\item[/g]  substitute all occurances sed -E -e 's/foo/bar/g' file  \\
+\item[1,10] substitue on only lines 1 to 10 ex. sed -E '1,10s/foo/bar/' file similar to grep \\
+\item[10,\$] from 10 to last ine  sed -E '10,\$s/foo/bar/' file  \\
+\item[/d] deleting lines 1 to 10 1,10d or /foo/d delete lines with 'foo'  \\
+\item[!d] don't delete  \\
+\item[awk] actions are enclosed in '\{print \$1 \$5\}' print the first and the fifth parameter in each input  \\
+\item[-F] also FS = sep, option in awk to specify the field separator character. Format: awk -F sep '/pattern1/ \{action1\} /pattern1 \{action2\}'  \\
+\item[awk calculation] awk '\{print \$1, \{\$3+\$5\}/\$6\}  \\
+\item[-f] putting awk scripts in a file similar to sed \#!/bin/awk -f newline \{action1\} newline \{action2\}  \\
+\item[BEGIN] BEGIN \{\} used to specify commands before the script and similarily is END \{\}. Both of them will be executed only once, unlike the rest of commands. ; needs to be at the end of each command line \\
+\item[printf] print with formating. awk '\{printf (" \%-12s \%-20s$\backslash$n", \$1, \$6)\}' database
+\end{description}
+
+
+\vspace{40pt}
+\section{\color{Magenta}{Master RegEx}\\}
+\begin{description}
+\item[\^\,(a|e)] not a or e  \\
+\item[\textbackslash<abc] find a word that begins with abc\\
+\item[\textbackslash>abc] find a word that ends with abc  \\
+\item[()?] whatever preceded ? is optional  \\
+\item[egrep -n -i] list lines and ignore capitalization i.e. case insensitive  \\
+\item[{[a-zA-Z]+}] match a generic word  \\
+\item[{\textbackslash < ([a-zA-Z]+)\textbackslash s+\textbackslash 1>}] match repeated words  \\
+\item[\textbackslash <(pattern1)(pattern2)(pattern3)\textbackslash 1\textbackslash 2\textbackslash 3\textbackslash >] in general, we can match pattern1 pattern2 and so on. This called backreferencing  \\
+\item[\textbackslash < ( {[a-zA-Z]\{3,4\}}) \textbackslash >] a word in parenthesis between 3 and 4 letters length   \\
+\item["{[\^\,"]}*"] match any double quote, except another double quotes  \\
+\item[*] any number, but optional  \\
+\item[+] at least one, more is optional  \\
+\item[\{n,m\}] length from min n to max m  \\
+\item[\{n\}] length is exactly n  \\
+\item[\{n,\}] length is n or more  \\
+\item[\textbackslash s, \textbackslash S] white space, Not whitespace  \\
+\item[\textbackslash d, \textbackslash D] digit, not a digit  \\
+\item[\textbackslash w, \textbackslash W] a word, not a word  \\
+\item[?= ?<=] lookahead, lookbehin  \\
+\item[?! ?<!] negative lookahead, negative lookbehind  \\
+\item[?() ?()|] if then, if then else  \\
+\item[?>] once-only subexpression  \\
+\item[egrep -i -R pattern .] looks in the current directory (all files) . to the pattern 
+\end{description}
+
+
+\vspace{40pt}
+
+\section{\color{Magenta}{functions}\\}
+\begin{description}
+\item[\$*] means all parameters  \\
+\item[\$\#] gives the number of parameters  \\
+\item[for filename] inside a function is a shorthand for filename in \$*  \\
+\item[return 0/1] exit status is either 0 for true or 1 for false  \\
+\item[. /dir/script] the the dot. used to include all functions in script into this script, yet no function is executed unless it is explicitly called  \\
+\item[:] is a UNIX command which always return true while : 
+\end{description}
+
+
+\paragraph{\color{RoyalBlue}{looping - if - shift}\\}
+\begin{description}
+\item[shift n] shift the parameter so that the first start with n  \\
+\item[set -- `command`] set the output of command into variables \$1, \$2, \$3 ...  \\
+\item[IFS] internal field separator, used in conjunction with "set" to specify the field separator of the parameters  \\
+\item[\$0] is the name of the script  \\
+\item[`basename \$0`] gives the basename of the directory, without the full path  \\
+\item[sh -x script] debugging  \\
+\item[\$?] exit status of last command  \\
+\item[if] if [ "condition1" ] ; then command1; elif [ "condition2" ] fi.  \\
+\item[diff file1 file2] whether file1 is different from file2  \\
+\item[-gt -lt = != parameter] greater than, lesser than, equal, not equal, return true if parameter has a value  \\
+\item[test -d/-f dirname/filename] true if the file exist  \\
+\item[case] case var in var1|var2) command; ; var4*) wild card var4 *) anything else... esac  \\
+\item[break continue] break: exit the loop, continue: abandon the current iteration
+\end{description}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\begin{thebibliography}{99}
+\bibitem{citekey}
+\emph{Title of the article}. the rest if citation
+\end{thebibliography}
+\end{document}
